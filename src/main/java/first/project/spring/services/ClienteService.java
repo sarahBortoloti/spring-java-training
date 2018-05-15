@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import first.project.spring.domain.Categoria;
 import first.project.spring.domain.Cliente;
 import first.project.spring.repositories.ClienteRepository;
 import javassist.tools.rmi.ObjectNotFoundException;
