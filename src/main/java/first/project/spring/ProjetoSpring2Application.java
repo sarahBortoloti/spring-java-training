@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import first.project.spring.domain.Categoria;
+import first.project.spring.domain.Cidade;
+import first.project.spring.domain.Estado;
 import first.project.spring.domain.Produto;
 import first.project.spring.repositories.CategoriaRepository;
+import first.project.spring.repositories.CidadeRepository;
+import first.project.spring.repositories.EstadoRepository;
 import first.project.spring.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -20,6 +24,13 @@ public class ProjetoSpring2Application implements CommandLineRunner {
 	
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoSpring2Application.class, args);
@@ -36,6 +47,15 @@ public class ProjetoSpring2Application implements CommandLineRunner {
 		Produto p2 = new Produto(null, "Impressora", 800.00);
 		Produto p3 = new Produto(null,"Mouse", 80.00);
 		
+		Estado est1 = new Estado(null, "Minas Gerais");
+		Estado est2 = new Estado(null, "São Paulo");
+		Cidade c1 = new Cidade(null,"Uberlândia", est1);
+		Cidade c2 = new Cidade(null,"São Paulo", est2);
+		Cidade c3 = new Cidade(null, "Campinas", est2);
+		
+		est1.getCidades().addAll(Arrays.asList(c1));
+		est2.getCidades().addAll(Arrays.asList(c2,c3));
+		
 		cat1.getProdutos().addAll(Arrays.asList(p1,p2,p3));
 		cat2.getProdutos().addAll(Arrays.asList(p2));
 		
@@ -45,6 +65,8 @@ public class ProjetoSpring2Application implements CommandLineRunner {
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1,cat2));
 		produtoRepository.saveAll(Arrays.asList(p1,p2,p3));
-	
+		estadoRepository.saveAll(Arrays.asList(est1, est2));
+		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
+
 	}
 }
