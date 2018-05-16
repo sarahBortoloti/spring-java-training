@@ -73,6 +73,12 @@ public class ProjetoSpring2Application implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		Categoria cat1 =new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritorio");
+		Categoria cat3 =new Categoria(null, "Verão");
+		Categoria cat4 = new Categoria(null, "Cozinha");
+		Categoria cat5 =new Categoria(null, "Móveis e planejados");
+		Categoria cat6 = new Categoria(null, "Celulares");
+		Categoria cat7 =new Categoria(null, "Viagem");
+		
 	
 
 		Produto p1 = new Produto(null, "Computador", 200.00);
@@ -125,7 +131,7 @@ public class ProjetoSpring2Application implements CommandLineRunner {
 		p2.getItens().addAll(Arrays.asList(ip1));
 		p3.getItens().addAll(Arrays.asList(ip2));
 		
-		categoriaRepository.saveAll(Arrays.asList(cat1,cat2));
+		categoriaRepository.saveAll(Arrays.asList(cat1,cat2,cat3,cat4,cat5,cat6,cat7));
 		produtoRepository.saveAll(Arrays.asList(p1,p2,p3));
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
